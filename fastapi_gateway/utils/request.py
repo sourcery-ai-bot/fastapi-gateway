@@ -6,9 +6,7 @@ T = Union[Dict[str, Any], CustomFormData, JsonPayload]
 
 
 def create_dict_if_not(data: Optional[T] = None) -> Union[dict, T]:
-    if data:
-        return data
-    return {}
+    return data if data else {}
 
 
 def create_request_data(
@@ -16,6 +14,4 @@ def create_request_data(
         body: Optional[JsonPayload]
 ) -> Optional[Union[CustomFormData, JsonPayload]]:
 
-    if form:
-        return form
-    return body
+    return form if form else body
